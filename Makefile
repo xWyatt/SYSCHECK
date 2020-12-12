@@ -1,18 +1,28 @@
 # Default Library:
-BIN_LIB=DASDCHEK
+BIN_LIB=SYSCHECK
 DBGVIEW=*ALL
 
-.PHONY: default all dspf rpg rpgle
+.PHONY: default all dspf rpg rpgle tosda fromsda
 default: all
 
 
-dasdcheck.pgm: dasdcheck.rpgle
+sysCheck.pgm: sysCheck.rpgle
 
-dspf: dasdcheck.dspf
-rpgle: dasdcheck.pgm
+dspf: sysCheck.dspf
+rpgle: sysCheck.pgm
 
 rpg: rpgle
 all: dspf rpgle
+
+tosda: sysCheck.tosda
+fromsda: sysCheck.fromsda
+
+%.tosda:
+	-system "CRTSRCPF FILE($(BIN_LIB)/QDDSSRC)"
+	system "CPYFRMIMPF FROMSTMF('./QDDSSRC/$*.dspf') TOFILE($(BIN_LIB)/QDDSSRC $*) RMVBLANK(*TRAILING) RCDDLM(*ALL) MBROPT(*REPLACE)"
+
+%.fromsda:
+	system "CPYTOIMPF FROMFILE($(BIN_LIB)/QDDSSRC $*) TOSTMF('./QDDSSRC/$*.dspf') MBROPT(*REPLACE) RCDDLM(*CRLF) STRDLM(*NONE) RMVBLANK(*TRAILING)"
 
 %.dspf:
 	-system "CRTSRCPF FILE($(BIN_LIB)/TMP4CMPILE)"
