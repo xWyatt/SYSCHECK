@@ -1,0 +1,24 @@
+pgm
+main:
+
+/* Proof of concept calling the SYSCHECK program from CL */
+/* The 'Y' signifies the progam should not open the display file but instead return values */
+dcl var(&RETURNVALS) type(*CHAR) len(1) value('Y')
+
+/* The following should be *DEC 6:4/3:2 but *CHAR is easier to use for POC */
+dcl var(&LASTUPD) type(*CHAR) len(26)
+dcl var(&DASDCUR) type(*CHAR) len(6)
+dcl var(&DASD5) type(*CHAR) len(6)
+dcl var(&DASDTODAY) type(*CHAR) len(6)
+dcl var(&CPUCUR) type(*CHAR) len(3)
+dcl var(&CPU5) type(*CHAR) len(3)
+dcl var(&CPUTODAY) type(*CHAR) len(3)
+
+CALL PGM(SYSCHECK) PARM(&RETURNVALS &LASTUPD &DASDCUR &DASD5 &DASDTODAY &CPUCUR &CPU5 &CPUTODAY)
+
+/* Everything was passed as *CHAR so we can just SNDPGMMSG and not bother with CHGVAR */
+SNDPGMMSG MSG('DASD:' *cat &DASDCUR *cat '/' *cat &DASD5 *cat '/' *cat &DASDTODAY *cat +
+             ' CPU:' *cat &CPUCUR *cat '/' *cat &CPU5 *cat '/' *cat &CPUTODAY *cat +
+             ' Last Updated:' *cat &LASTUPD)
+
+endpgm
