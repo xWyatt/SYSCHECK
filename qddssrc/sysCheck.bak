@@ -1,0 +1,24 @@
+     A*%%TS  SD  20201203  011020  WTEETER     REL-V7R4M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A          R MAIN
+     A*%%TS  SD  20201203  011020  WTEETER     REL-V7R4M0  5770-WDS
+     A                                  2 32'Check System Status'
+     A                                  5 25'Current DASD usage:'
+     A            DASDCUR        3   O  5 55COLOR(YLW)
+     A                                  6 25'Last 5 min. DASD increase:'
+     A            DASD5          3   O  6 55COLOR(YLW)
+     A                                  7 25'Start of day DASD increase:'
+     A            DASDSOD        3   O  7 55COLOR(YLW)
+     A                                  9 25'Current CPU usage:'
+     A            CPUCUR         3   O  9 55COLOR(YLW)
+     A                                 10 25'Last 5 min. CPU increase:'
+     A            CPU5           3   O 10 55COLOR(YLW)
+     A                                 11 25'Start of day CPU increase:'
+     A            CPUSOD         3   O 11 55COLOR(YLW)
+     A                                 13 25'Current RAM usage:'
+     A            RAMCUR         3   O 13 55COLOR(YLW)
+     A                                 14 25'Last 5 min. RAM increase:'
+     A            RAM5           3   O 14 55COLOR(YLW)
+     A                                 15 25'Start of day CPU increase:'
+     A            RAMSOD         3   O 15 55COLOR(YLW)

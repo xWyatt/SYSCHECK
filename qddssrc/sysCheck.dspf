@@ -1,0 +1,67 @@
+     A*%%TS  SD  20201231  233016  WTEETER     REL-V7R4M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      INDARA
+     A                                      CF03(03)
+     A                                      CF05(05)
+     A                                      CF06(06)
+     A          R HEADER
+     A*%%TS  SD  20201212  214728  WTEETER     REL-V7R4M0  5770-WDS
+     A                                      OVERLAY
+     A                                  2 31'Check System Status'
+     A                                  2 72TIME
+     A                                  3 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2USER
+     A                                  3  2SYSNAME
+     A          R FOOTER
+     A*%%TS  SD  20201212  194958  WTEETER     REL-V7R4M0  5770-WDS
+     A                                      OVERLAY
+     A                                 23 20'F3=Exit      F5=Refresh Data     F-
+     A                                      6=About '
+     A                                      COLOR(BLU)
+     A          R DATA
+     A*%%TS  SD  20201215  021104  WTEETER     REL-V7R4M0  5770-WDS
+     A                                      OVERLAY
+     A                                  7 10'Current DASD usage:'
+     A            DASDCUR        8A  O  7 32COLOR(YLW)
+     A                                  8 10'DASD 5 min. ago:'
+     A            DASD5          8A  O  8 32COLOR(YLW)
+     A                                  9 10'DASD § start of day:'
+     A            DASDSOD        8A  O  9 32COLOR(YLW)
+     A                                  7 45'Current CPU usage:'
+     A            CPUCUR         5A  O  7 66COLOR(YLW)
+     A                                  8 45'CPU 5 min. ago:'
+     A            CPU5           5A  O  8 66COLOR(YLW)
+     A                                  9 45'CPU § start of day:'
+     A            CPUSOD         5A  O  9 66COLOR(YLW)
+     A            MESSAGE       50A  O 18 16COLOR(WHT)
+     A                                 12 24'Last Updated:'
+     A            LASTUPD       19A  O 12 39
+     A          R ABOUT
+     A*%%TS  SD  20201231  233016  WTEETER     REL-V7R4M0  5770-WDS
+     A                                      OVERLAY
+     A                                  3 38'About'
+     A                                      COLOR(WHT)
+     A                                  6 19'Author: Wyatt Teeter <teeterwyatt§-
+     A                                      gmail.com>'
+     A                                      COLOR(WHT)
+     A                                  8 15'Webpage: https://github.com/xWyatt-
+     A                                      /IBMi-System-Check'
+     A                                      COLOR(WHT)
+     A                                 10  5'Purpose: The program is designed t-
+     A                                      o be ran regulary (once every minut-
+     A                                      e for      example) and the output -
+     A                                      data used by a monitoring service, -
+     A                                      like Nagios, to      alert on chang-
+     A                                      es in DASD/CPU over a set period of-
+     A                                       time.'
+     A                                      COLOR(WHT)
+     A                                 23 19' '
+     A                                      COLOR(BLU)
+     A                                 16 12'The workstation file is included j-
+     A                                      ust to test the program'
+     A                                      COLOR(WHT)
+     A                                 23 21'        Press <enter> to continue -
+     A                                             '
+     A                                      COLOR(BLU)
