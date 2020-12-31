@@ -2,7 +2,7 @@
 BIN_LIB=SYSCHECK
 DBGVIEW=*ALL
 
-.PHONY: default all dspf rpg rpgle tosda fromsda
+.PHONY: default all dspf rpg rpgle tosda fromsda dtaara clle
 default: all
 
 
@@ -10,12 +10,19 @@ sysCheck.pgm: sysCheck.rpgle
 
 dspf: sysCheck.dspf
 rpgle: sysCheck.pgm
+clle: sysCheckCL.clle
 
 rpg: rpgle
-all: dspf rpgle
+all: dspf rpgle dtaara
 
 tosda: sysCheck.tosda
 fromsda: sysCheck.fromsda
+
+dtaara:
+	system "CRTDTAARA DTAARA($(BIN_LIB)/SYSCHECK) TYPE(*CHAR) LEN(59)"
+
+%.clle:
+	system "CRTBNDCL PGM($(BIN_LIB)/$*) SRCSTMF('./QCLLESRC/$*.clle') REPLACE(*YES)"
 
 %.tosda:
 	-system "CRTSRCPF FILE($(BIN_LIB)/QDDSSRC)"
